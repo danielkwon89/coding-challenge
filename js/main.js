@@ -12,8 +12,10 @@ function fetchCourses() {
     .then(data => {
         // call function here to render app name at top of page
         renderAppName(data.app)
-        // call function here to render course information
-        renderCourses(data.courses)
+        // call function here to sort courses and assign them to the sortedCourses variable
+        const sortedCourses = sortCourses(data.courses)
+        // call function here to render sorted course information
+        renderCourses(sortedCourses)
     });
 }
 
@@ -23,6 +25,27 @@ function renderAppName(appName) {
     header.id = 'app-name-header'
     header.innerHTML = appName
     document.body.appendChild(header)
+}
+
+function sortCourses(courses) {
+    let sortedCourses = []
+    const tempObj = {}
+
+    courses.forEach(course => {
+        // filling temp object with arrays of courses organized by difficulty level key 
+        // e.g. tempObj = {1: [...], 2: [...], 3: [...]}
+        const difficultyLevel = `${course.difficulty_level}`
+        tempObj[difficultyLevel] ? tempObj[difficultyLevel].push(course) : tempObj[difficultyLevel] = [course]
+    })
+
+    // iterating through tempObj keys and sorting each array before merging it into sortedCourses array
+    for (const courses in tempObj) {
+        const sorted = tempObj[courses].sort((a, b) => (a.name.toLowerCase() > b.name.toLowerCase()) ? 1 : -1)
+        sortedCourses = sortedCourses.concat(sorted)
+    }
+
+    // returning sortedCourses which should now be sorted by difficulty level then alphabetically
+    return sortedCourses
 }
 
 function renderCourses(courses) {
