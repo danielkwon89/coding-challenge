@@ -1,9 +1,8 @@
 const catalogEndpoint = 'https://s3-us-west-1.amazonaws.com/assets.interplay-learning.com/interview-tests/simple-catalog/catalog.json'
 
 document.addEventListener('DOMContentLoaded', () => {
-    // making API call once DOM is loaded
+    // making API call on DOM load
     fetchCourses()
-
 });
 
 // defining function to make API call
@@ -53,6 +52,11 @@ function renderCourses(courses) {
         courseDiv.appendChild(courseName)
         courseDiv.appendChild(courseImage)
         courseDiv.appendChild(courseDescription)
+
+        // adding event listener to course div to alert user that the course has been started
+        courseDiv.addEventListener('click', function() {
+            window.alert(`${course.name} has been chosen!`)
+        })
 
         // appending course div to courses container
         coursesContainer.appendChild(courseDiv)
