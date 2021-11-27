@@ -40,6 +40,7 @@ function sortCourses(courses) {
 
     // iterating through tempObj keys and sorting each array before merging it into sortedCourses array
     for (const courses in tempObj) {
+        // .toLowerCase() called to alphabetically sort the course names correctly
         const sorted = tempObj[courses].sort((a, b) => (a.name.toLowerCase() > b.name.toLowerCase()) ? 1 : -1)
         sortedCourses = sortedCourses.concat(sorted)
     }
