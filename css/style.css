@@ -1,3 +1,51 @@
 body {
-    background-color: skyblue
+    background-color: #1C2D47;
+    color: white;
+    font-family: Montserrat, sans-serif;
+    margin: 0;
+}
+
+#courses-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px 0px 20px 0px;
+}
+
+#course {
+    background-color: #2D405B;
+    text-align: center;
+    width: 500px;
+    height: auto;
+    margin: 18px;
+}
+
+#course:hover {
+    background-color: #4A5971;
+    transform: scale(1.01);
+    transition: transform 0.3s ease-in-out;
+}
+
+#course-img {
+    width: 100%;
+    height: auto;
+}
+
+#orange {
+    color: #F7881C;
+}
+
+h1 {
+    margin: 0;
+    padding: 20px;
+    background-color: #4A5971;
+}
+
+h3 {
+    padding: 15px 15px 5px 15px
+}
+
+p {
+    padding: 10px 25px 25px 25px;
 }

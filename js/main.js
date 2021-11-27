@@ -11,6 +11,7 @@ function fetchCourses() {
     .then(response => response.json())
     .then(data => {
         // call function here to render app name at top of page
+        console.log(data.courses)
         renderAppName(data.app)
         // call function here to sort courses and assign them to the sortedCourses variable
         const sortedCourses = sortCourses(data.courses)
@@ -23,8 +24,15 @@ function renderAppName(appName) {
     // creating h1 element for app name header and appending to DOM
     const header = document.createElement('h1')
     header.id = 'app-name-header'
-    header.innerHTML = appName
-    document.body.appendChild(header)
+    if (appName === 'SkillMill') {
+        // styles 'SKILLMILL' header with orange accent
+        header.innerHTML = "<span id='orange'>SKILL</span>MILL"
+        document.body.appendChild(header)
+    }
+    else {
+        header.innerHTML = appName.toUpperCase()
+        document.body.appendChild(header)
+    }
 }
 
 function sortCourses(courses) {
@@ -73,8 +81,8 @@ function renderCourses(courses) {
         courseDescription.innerText = course.description
 
         // appending h3, img, and p elements to course div
-        courseDiv.appendChild(courseName)
         courseDiv.appendChild(courseImage)
+        courseDiv.appendChild(courseName)
         courseDiv.appendChild(courseDescription)
 
         // adding event listener to course div to alert user that the course has been started
