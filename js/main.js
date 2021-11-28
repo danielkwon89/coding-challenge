@@ -11,7 +11,6 @@ function fetchCourses() {
     .then(response => response.json())
     .then(data => {
         // call function here to render app name at top of page
-        console.log(data.courses)
         renderAppName(data.app)
         // call function here to sort courses and assign them to the sortedCourses variable
         const sortedCourses = sortCourses(data.courses)
